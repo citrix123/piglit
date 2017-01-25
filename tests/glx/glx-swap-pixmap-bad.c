@@ -44,6 +44,8 @@ int pass = 1;
 static int
 handler(Display *dpy, XErrorEvent *err)
 {
+    char buf[1024];
+    XGetErrorText(dpy, err->error_code, buf, 1024);
     if (piglit_glx_get_error(dpy, err) != GLXBadDrawable)
 	pass = 0;
     return 0;
